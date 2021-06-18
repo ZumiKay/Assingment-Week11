@@ -52,17 +52,7 @@
             <th style="border: 0px"></th>
 
             @foreach($data as $i)
-                <div id="overlay1">
-                    <form style="margin-top: 400px;" action="/editpost/{{$i->id}}" method="POST">
-                        @csrf
-                        <label>Title</label>
-                        <input value="{{$i->title}}" name="title" type="text"/>
-                        <label>Description</label>
-                        <input value="{{$i->description}}" name="description" type="text"/>
-                        <button type="submit">Edit Post</button>
-                        <button onclick="off1()" type='button'> Cancel </button>
-                    </form>
-                </div>
+
 
             <tr>
                 <td>{{$i->id}}</td>
@@ -73,7 +63,7 @@
              @if(Auth::id() == $i->user_id || Auth::user()->role == 'Admin')
 
 
-              <td> <button onclick="on1()">Edit</button> </td>
+                    <td> <button> <a href="/edit/{{$i->id}}">Edit</a></button> </td>
               <td> <button> <a href="delete/{{$i->id}}"> Delete </a> </button> </td>
                 @endif
             </tr>

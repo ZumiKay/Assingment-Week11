@@ -62,7 +62,7 @@
                 <td>{{$i->content}}</td>
 
                 @if(Auth::user()->role == 'Admin')
-                    <td> <button onclick="on1()">Edit</button> </td>
+                    <td> <button> <a href="/editcategory/{{$i->id}}"> Edit </a> </button> </td>
                     <td> <button> <a href="deletecategory/{{$i->id}}"> Delete </a> </button> </td>
 
                 @endif

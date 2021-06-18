@@ -41,13 +41,20 @@ class PostController extends Controller
 
     }
 
-    public function editpost (Request $request , $id){
+    public function editpost ($id){
+        $post = DB::select('select * from post where id=?',[$id]);
+        $category = Category::get('name' , 'id');
+        return view('Edit-Form' , ['editdata' => $post , 'categories' => $category]);
 
+
+     }
+
+     public function update (Request $request , $id) {
         $title = $request->input('title');
         $description = $request->input('description');
-        DB::update('update post set title=?, description=? where id=?',[$title , $description , $id]);
+        $category_id = $request->input('category_id');
+         DB::update('update post set title=?,description=?,category_id=? where id=?',[$title , $description,$category_id , $id]);
         return redirect('/post');
-
      }
 
      public function deletedpost ($id) {

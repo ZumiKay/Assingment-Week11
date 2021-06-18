@@ -46,10 +46,14 @@ class CategoryController extends Controller
         }
 
     }
-    public function editCategory(Request $request,$id){
+    public function editCategory($id){
+        $category = DB::select('select * from category where id=?',[$id]);
+        return view('EditCategories' , ['category' => $category]);
+
+    }
+    public function updateCategory (Request $request , $id){
         $name = $request->input('name');
         $content = $request->input('content');
-
         DB::update('update category set name=?,content=? where id=?',[$name , $content , $id]);
         return redirect('/category');
 
