@@ -37,8 +37,13 @@ class CategoryController extends Controller
     }
     public function getCategory ()
     {
-        $category = Category::all();
-        return view('Category' ,['category' => $category]);
+        if(Auth::user()) {
+            $category = Category::all();
+            return view('Category', ['category' => $category]);
+        }
+        else {
+            return view('Login');
+        }
 
     }
     public function editCategory(Request $request,$id){

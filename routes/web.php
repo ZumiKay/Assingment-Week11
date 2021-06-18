@@ -31,7 +31,7 @@ Route::get('delete/{id}' , [\App\Http\Controllers\PostController::class , 'delet
 Route::post('editpost/{id}' , [\App\Http\Controllers\PostController::class , 'editpost']);
 Route::get('user/{id}' , [\App\Http\Controllers\AuthController::class, 'getuserbyid']);
 Route::get('/category' , [\App\Http\Controllers\CategoryController::class , 'getCategory']);
-Route::get('/index/{id}', [\App\Http\Controllers\CategoryController::class , 'index']);
+
 
 Route::middleware('admin_role')->group(function () {
     Route::post('/createCategory' , [\App\Http\Controllers\CategoryController::class , 'createCategory'])->name('createCategory');

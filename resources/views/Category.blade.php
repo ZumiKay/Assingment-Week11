@@ -8,7 +8,7 @@
                 <div class="post-heading">
                     @if(Auth::user())
                         <h1>{{Auth::user()->full_name}}'s Category</h1>
-                    @endif
+
                     @if(Auth::user()->role == 'Admin')
                     <div id="overlay">
                         <form id="text" action="{{route("createCategory")}}" method="POST">
@@ -25,6 +25,7 @@
                         <button onclick="on()">Add New Category</button>
                     </div>
                         @endif
+                    @endif
 
                 </div>
             </div>
